@@ -55,10 +55,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        //Get the cell that user selected
         let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
         
-        //flip the card
-        cell.flip()
+        //Get the card that user selected
+        let card = cardArray[indexPath.row]
+        
+        if card.isFlipped == false {
+            
+            //flip the card
+            cell.flip()
+            
+            //Set the status of the card
+            card.isFlipped = true
+            
+        }else {
+            //Flip the card back
+            cell.flipBack()
+            
+            //Set the status of the card
+            card.isFlipped = false
+        }
+        
+        
         
     }
 }
